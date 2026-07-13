@@ -6,8 +6,8 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 3696e0428533cf6bbcb9586c3bcfca7b5e7aaa269650ff16a862a7f61b857f4a
+  url: https://github.com/GIScience/{{ name }}-py/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: c874eaa4acf224eee9d78b75703de01a0063c2ef15d7e79ad17b7b1cb9bf8ca0
 
 build:
   number: 0
