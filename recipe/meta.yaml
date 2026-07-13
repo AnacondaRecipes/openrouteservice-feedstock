@@ -1,0 +1,53 @@
+{% set name = "openrouteservice" %}
+{% set version = "2.3.3" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 3696e0428533cf6bbcb9586c3bcfca7b5e7aaa269650ff16a862a7f61b857f4a
+
+build:
+  number: 0
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - pip
+    - python
+    - wheel
+    - setuptools
+  run:
+    - python
+    - requests >=2.0
+
+test:
+  source_files:
+    - test
+  imports:
+    - openrouteservice
+  commands:
+    - pip check
+    - pytest -v test
+  requires:
+    - pip
+    - pytest
+    - responses >=0.10
+
+about:
+  home: https://github.com/GIScience/openrouteservice-py
+  summary: Python client for requests to openrouteservice API services
+  license: Apache-2.0
+  license_file: LICENSE
+  license_family: Apache
+  description: |
+    The openrouteservice library gives you painless access to the openrouteservice (ORS) routing API’s.
+    It performs requests against our API’s for
+  dev_url: https://github.com/GIScience/openrouteservice-py
+  doc_url: https://github.com/GIScience/openrouteservice-py
+
+extra:
+  recipe-maintainers:
+    - snegireff
